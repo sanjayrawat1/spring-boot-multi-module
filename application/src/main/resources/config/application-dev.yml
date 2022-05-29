@@ -1,0 +1,10 @@
+spring:
+  devtools:
+    restart:
+      enabled: true
+  jackson:
+    serialization:
+      indent-output: true
+
+server:
+  port: 8080
