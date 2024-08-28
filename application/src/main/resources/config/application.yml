@@ -68,6 +68,18 @@ spring:
   output:
     ansi:
       enabled: detect
+  task:
+    execution:
+      thread-name-prefix: spring-boot-multi-module-task-
+      pool:
+        core-size: 8
+        max-size: 50
+        queue-capacity: 10000
+    scheduling:
+      thread-name-prefix: spring-boot-multi-module-scheduling-
+      pool:
+        size: 2
+
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
