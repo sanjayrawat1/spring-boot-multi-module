@@ -59,6 +59,7 @@ spring:
     group:
       dev:
         - dev
+        - api-docs
   jmx:
     enabled: false
   messages:
@@ -88,3 +89,16 @@ spring:
 application:
   name: ${spring.application.name}
   client-id: spring-boot-multi-module
+  api-docs:
+    title: Spring Boot Multi Module API
+    description: Spring Boot Multi Module API documentation
+    version: 0.0.1
+    terms-of-service-url:
+    contact-name:
+    contact-email:
+    contact-url:
+    license:
+    default-include-pattern: /spring-boot-multi-module/api/.*
+    host:
+    protocols:
+    use-default-response-message: true

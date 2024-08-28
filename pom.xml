@@ -68,6 +68,7 @@
         <sortpom-maven-plugin.version>2.12.0</sortpom-maven-plugin.version>
         <spring-boot.version>2.5.2</spring-boot.version>
         <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <springfox.version>3.0.0</springfox.version>
         <testcontainers.version>1.15.1</testcontainers.version>
     </properties>
 
@@ -107,6 +108,11 @@
                 <groupId>com.github.sanjayrawat1</groupId>
                 <artifactId>service</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mapstruct</groupId>
@@ -617,6 +623,12 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>api-docs</id>
+            <properties>
+                <profile.apiDocs>,api-docs</profile.apiDocs>
+            </properties>
+        </profile>
         <profile>
             <id>dev</id>
             <activation>
