@@ -19,3 +19,16 @@ spring:
   h2:
     console:
       enabled: false
+
+application:
+  security:
+    authentication:
+      clients:
+        product-service:
+          token-validity-in-seconds: 86400 # token is valid for 24 hours
+        order-service:
+          token-validity-in-seconds: 86400 # token is valid for 24 hours
+        shipping-service:
+          token-validity-in-seconds: 86400 # token is valid for 24 hours
+        fulfilment-service:
+          token-validity-in-seconds: 86400 # token is valid for 24 hours

@@ -23,4 +23,14 @@ public interface ApplicationDefaults {
         String[] protocols = {};
         boolean useDefaultResponseMessage = true;
     }
+
+    interface Security {
+        interface Authentication {
+            interface Jwt {
+                String secret = null;
+                String base64Secret = null;
+                long tokenValidityInSeconds = 1800;
+            }
+        }
+    }
 }

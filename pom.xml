@@ -44,6 +44,7 @@
         <java.version>17</java.version>
         <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
         <jib-maven-plugin.version>2.4.0</jib-maven-plugin.version>
+        <jjwt.version>0.11.2</jjwt.version>
         <junit-itReportFolder>${project.testresult.directory}/integrationTest</junit-itReportFolder>
         <junit-utReportFolder>${project.testresult.directory}/test</junit-utReportFolder>
         <lombok.version>1.18.22</lombok.version>
@@ -115,6 +116,21 @@
                 <groupId>com.vladmihalcea</groupId>
                 <artifactId>hibernate-types-52</artifactId>
                 <version>${hibernate-types.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.springfox</groupId>

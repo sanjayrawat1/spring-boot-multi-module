@@ -131,3 +131,22 @@ application:
     host:
     protocols:
     use-default-response-message: true
+  security:
+    authentication:
+      clients:
+        product-service:
+          base64-secret: ${PS_SPRING_BOOT_MULTI_MODULE_SECRET}
+          token-validity-in-seconds: 300 # token is valid for 5 minutes
+          roles: ROLE_CLIENT_PRODUCT_SERVICE
+        order-service:
+          base64-secret: ${OS_SPRING_BOOT_MULTI_MODULE_SECRET}
+          token-validity-in-seconds: 300 # token is valid for 5 minutes
+          roles: ROLE_CLIENT_ORDER_SERVICE
+        shipping-service:
+          base64-secret: ${SS_SPRING_BOOT_MULTI_MODULE_SECRET}
+          token-validity-in-seconds: 300 # token is valid for 5 minutes
+          roles: ROLE_CLIENT_SHIPPING_SERVICE
+        fulfilment-service:
+          base64-secret: ${FS_SPRING_BOOT_MULTI_MODULE_SECRET}
+          token-validity-in-seconds: 300 # token is valid for 5 minutes
+          roles: ROLE_CLIENT_FULFILMENT_SERVICE

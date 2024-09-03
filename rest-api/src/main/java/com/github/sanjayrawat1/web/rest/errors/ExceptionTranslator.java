@@ -28,6 +28,7 @@ import org.zalando.problem.ProblemBuilder;
 import org.zalando.problem.StatusType;
 import org.zalando.problem.ThrowableProblem;
 import org.zalando.problem.spring.web.advice.ProblemHandling;
+import org.zalando.problem.spring.web.advice.security.SecurityAdviceTrait;
 import org.zalando.problem.violations.ConstraintViolationProblem;
 
 /**
@@ -39,7 +40,7 @@ import org.zalando.problem.violations.ConstraintViolationProblem;
 @Slf4j
 @ControllerAdvice
 @RequiredArgsConstructor
-public class ExceptionTranslator implements ProblemHandling {
+public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait {
 
     private static final String FIELD_ERRORS_KEY = "fieldErrors";
     private static final String MESSAGE_KEY = "message";
