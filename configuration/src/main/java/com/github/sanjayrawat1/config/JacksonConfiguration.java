@@ -5,6 +5,8 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.zalando.problem.ProblemModule;
+import org.zalando.problem.violations.ConstraintViolationProblemModule;
 
 /**
  * Jackson Configuration.
@@ -27,5 +29,15 @@ public class JacksonConfiguration {
     @Bean
     public Hibernate5Module hibernate5Module() {
         return new Hibernate5Module();
+    }
+
+    @Bean
+    public ProblemModule problemModule() {
+        return new ProblemModule();
+    }
+
+    @Bean
+    public ConstraintViolationProblemModule constraintViolationProblemModule() {
+        return new ConstraintViolationProblemModule();
     }
 }

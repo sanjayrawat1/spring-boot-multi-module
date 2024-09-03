@@ -16,8 +16,8 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
 
 @Slf4j
-@SpringBootApplication(exclude = ErrorMvcAutoConfiguration.class)
 @EnableConfigurationProperties({ ApplicationProperties.class })
+@SpringBootApplication(exclude = { ErrorMvcAutoConfiguration.class })
 public class Application {
 
     private final Environment env;

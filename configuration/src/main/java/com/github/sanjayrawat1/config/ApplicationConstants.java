@@ -19,4 +19,8 @@ public interface ApplicationConstants {
      * Spring profile used when deploying to Kubernetes.
      */
     String SPRING_PROFILE_K8S = "k8s";
+
+    String SLEUTH_TRACE_ID_KEY = "traceId";
+
+    String SLEUTH_SPAN_ID_KEY = "spanId";
 }

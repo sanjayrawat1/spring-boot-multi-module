@@ -10,7 +10,10 @@
     <artifactId>external-integration</artifactId>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>problem-spring-web</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
