@@ -109,6 +109,22 @@ spring:
       thread-name-prefix: spring-boot-multi-module-scheduling-
       pool:
         size: 2
+  kafka:
+    bootstrap-servers: localhost:9091,localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      retries: 3
+    consumer:
+      group-id: spring-boot-multi-module-group
+      auto-offset-reset: earliest
+      # Configures the Spring Kafka ErrorHandlingDeserializer that delegates to the 'real' deserializers
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        # Delegate deserializers
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
 
 # ===================================================================
 # Application specific properties
@@ -150,3 +166,18 @@ application:
           base64-secret: ${FS_SPRING_BOOT_MULTI_MODULE_SECRET}
           token-validity-in-seconds: 300 # token is valid for 5 minutes
           roles: ROLE_CLIENT_FULFILMENT_SERVICE
+  kafka:
+    topic:
+      test:
+        enabled: false
+        topic-name: test-topic
+      order-status:
+        enabled: true
+        topic-name: order-status
+    consumer:
+      error-handler:
+        exponential-back-off:
+          initial-interval: 5000
+          multiplier: 5.0
+          max-interval: 60000
+          max-elapsed-time: 125000

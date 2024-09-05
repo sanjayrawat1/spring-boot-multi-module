@@ -12,7 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * Properties specific to spring-boot-multi-module Application.
  * Properties are configured in the {@code application.yml} file.
  *
- * @author Sanjay Singh Rawat
+ * @author sanjayrawat1
  */
 @Getter
 @Setter
@@ -26,6 +26,8 @@ public class ApplicationProperties {
     private final ApiDocs apiDocs = new ApiDocs();
 
     private final Security security = new Security();
+
+    private final Kafka kafka = new Kafka();
 
     @Getter
     @Setter
@@ -78,6 +80,71 @@ public class ApplicationProperties {
                 private long tokenValidityInSeconds = ApplicationDefaults.Security.Authentication.Jwt.tokenValidityInSeconds;
 
                 private Set<String> roles = new HashSet<>();
+            }
+        }
+    }
+
+    @Getter
+    public static class Kafka {
+
+        private final Topic topic = new Topic();
+
+        private final Consumer consumer = new Consumer();
+
+        @Getter
+        public static class Topic {
+
+            private final Test test = new Test();
+
+            private final OrderStatus orderStatus = new OrderStatus();
+
+            @Getter
+            @Setter
+            public static class BaseTopic {
+
+                private boolean enabled = ApplicationDefaults.Kafka.Topic.BaseTopic.enabled;
+
+                private String topicName = ApplicationDefaults.Kafka.Topic.BaseTopic.topicName;
+
+                private int partitions = ApplicationDefaults.Kafka.Topic.BaseTopic.partitions;
+
+                private short replicas = ApplicationDefaults.Kafka.Topic.BaseTopic.replicas;
+            }
+
+            @Getter
+            @Setter
+            public static class Test extends BaseTopic {}
+
+            @Getter
+            @Setter
+            public static class OrderStatus extends BaseTopic {
+
+                private String topicName = ApplicationDefaults.Kafka.Topic.OrderStatus.topicName;
+            }
+        }
+
+        @Getter
+        public static class Consumer {
+
+            private final ErrorHandler errorHandler = new ErrorHandler();
+
+            @Getter
+            public static class ErrorHandler {
+
+                private final ExponentialBackOff exponentialBackOff = new ExponentialBackOff();
+
+                @Getter
+                @Setter
+                public static class ExponentialBackOff {
+
+                    private long initialInterval = ApplicationDefaults.Kafka.Consumer.ErrorHandler.ExponentialBackOff.initialInterval;
+
+                    private double multiplier = ApplicationDefaults.Kafka.Consumer.ErrorHandler.ExponentialBackOff.multiplier;
+
+                    private long maxInterval = ApplicationDefaults.Kafka.Consumer.ErrorHandler.ExponentialBackOff.maxInterval;
+
+                    private long maxElapsedTime = ApplicationDefaults.Kafka.Consumer.ErrorHandler.ExponentialBackOff.maxElapsedTime;
+                }
             }
         }
     }
